@@ -27,5 +27,14 @@
                    Feet.BaseDamage +
                    Chest.BaseDamage;
         }
+
+        public float CalculateDamageModifier()
+        {
+            return LeftHand.DamageModifier +
+                   RightHand.DamageModifier +
+                   Head.DamageModifier +
+                   Feet.DamageModifier +
+                   Chest.DamageModifier;
+        }
     }
 }

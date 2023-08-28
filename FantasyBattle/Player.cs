@@ -25,19 +25,10 @@ namespace FantasyBattle
 
         private float CalculateDamageModifier()
         {
-            Equipment equipment = Inventory.Equipment;
-            Item leftHand = equipment.LeftHand;
-            Item rightHand = equipment.RightHand;
-            Item head = equipment.Head;
-            Item feet = equipment.Feet;
-            Item chest = equipment.Chest;
+            var equipmentDamageModifier = Inventory.Equipment.CalculateDamageModifier();
             float strengthModifier = Stats.Strength * 0.1f;
-            return strengthModifier +
-                   leftHand.DamageModifier +
-                   rightHand.DamageModifier +
-                   head.DamageModifier +
-                   feet.DamageModifier +
-                   chest.DamageModifier;
+            return strengthModifier + equipmentDamageModifier;
+
         }
 
         private int GetSoak(Target other, int totalDamage)
