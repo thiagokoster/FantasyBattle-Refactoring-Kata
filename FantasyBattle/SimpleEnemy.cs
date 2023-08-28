@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace FantasyBattle
 {
-    public class SimpleEnemy : Target
+    public class SimpleEnemy : ITarget
     {
         public virtual Armor Armor { get; }
         public virtual List<Buff> Buffs { get; }

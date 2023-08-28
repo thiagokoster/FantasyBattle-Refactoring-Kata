@@ -1,6 +1,6 @@
 namespace FantasyBattle
 {
-    public abstract class Target
+    public interface ITarget
     {
     }
 }

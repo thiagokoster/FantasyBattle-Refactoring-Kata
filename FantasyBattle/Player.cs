@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace FantasyBattle
 {
-    public class Player : Target
+    public class Player : ITarget
     {
         public IInventory Inventory { get; }
         public Stats Stats { get; }
@@ -14,7 +14,7 @@ namespace FantasyBattle
             Stats = stats;
         }
 
-        public Damage CalculateDamage(Target other)
+        public Damage CalculateDamage(ITarget other)
         {
             int baseDamage = Inventory.EquipmentBaseDamage();
             float damageModifier = CalculateDamageModifier();
@@ -30,7 +30,7 @@ namespace FantasyBattle
             return strengthModifier + equipmentDamageModifier;
         }
 
-        private int GetSoak(Target other, int totalDamage)
+        private int GetSoak(ITarget other, int totalDamage)
         {
             int soak = 0;
             if (other is Player)
