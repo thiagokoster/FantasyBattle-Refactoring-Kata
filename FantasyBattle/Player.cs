@@ -5,10 +5,10 @@ namespace FantasyBattle
 {
     public class Player : Target
     {
-        public Inventory Inventory { get; }
+        public IInventory Inventory { get; }
         public Stats Stats { get; }
 
-        public Player(Inventory inventory, Stats stats)
+        public Player(IInventory inventory, Stats stats)
         {
             Inventory = inventory;
             Stats = stats;

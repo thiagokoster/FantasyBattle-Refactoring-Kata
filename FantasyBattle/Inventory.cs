@@ -1,14 +1,8 @@
 namespace FantasyBattle
 {
-    public class Inventory
+    public class Inventory : IInventory
     {
         public virtual Equipment Equipment { get; }
-
-        public Inventory()
-        {
-
-        }
-
 
         public Inventory(Equipment equipment)
         {
