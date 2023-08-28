@@ -28,6 +28,36 @@ namespace FantasyBattle.Tests
         }
 
         [Fact]
+        public void CalculateBaseDamage_ShouldReturnZero_WhenNoEquipment()
+        {
+            // Arrange
+            var equipment = new Equipment(null, null, null, null, null);
+
+            // Act
+            var damage = equipment.CalculateBaseDamage();
+
+            // Assert
+            Assert.Equal(0, damage);
+        }
+
+        [Fact]
+        public void CalculateBaseDamage_ShouldReturn_WhenOneEquipment()
+        {
+            // Arrange
+            var equipment = new Equipment(new BasicItem("excalibur", 20, 1.5f),
+                null,
+                null,
+                null,
+                null);
+
+            // Act
+            var damage = equipment.CalculateBaseDamage();
+
+            // Assert
+            Assert.Equal(20, damage);
+        }
+
+        [Fact]
         public void CalculateDamageModified_ShouldReturn_WhenFullSet()
         {
             // Arrange
@@ -44,6 +74,37 @@ namespace FantasyBattle.Tests
 
             // Assert
             Assert.Equal(5.6F, modifier, 3);
+        }
+
+        [Fact]
+        public void CalculateDamageModified_ShouldReturnZero_WhenNoEquipment()
+        {
+            // Arrange
+            var equipment = new Equipment(null, null, null, null, null);
+
+            // Act
+            var modifier = equipment.CalculateDamageModifier();
+
+            // Assert
+            Assert.Equal(0, modifier);
+        }
+
+        [Fact]
+        public void CalculateDamageModified_ShouldReturn_WhenOneEquipment()
+        {
+            // Arrange
+            var equipment = new Equipment(
+                new BasicItem("round shield", 0, 1.4f),
+                null,
+                null,
+                null,
+                null);
+
+            // Act
+            var modifier = equipment.CalculateDamageModifier();
+
+            // Assert
+            Assert.Equal(1.4F, modifier, 3);
         }
     }
 }

@@ -21,20 +21,30 @@
 
         public int CalculateBaseDamage()
         {
-             return LeftHand.BaseDamage +
-                   RightHand.BaseDamage +
-                   Head.BaseDamage +
-                   Feet.BaseDamage +
-                   Chest.BaseDamage;
+             return GetBaseDamage(LeftHand) +
+                   GetBaseDamage(RightHand) +
+                   GetBaseDamage(Head) +
+                   GetBaseDamage(Feet) +
+                   GetBaseDamage(Chest);
         }
 
         public float CalculateDamageModifier()
         {
-            return LeftHand.DamageModifier +
-                   RightHand.DamageModifier +
-                   Head.DamageModifier +
-                   Feet.DamageModifier +
-                   Chest.DamageModifier;
+            return GetDamageModifier(LeftHand) +
+                   GetDamageModifier(RightHand) +
+                   GetDamageModifier(Head) +
+                   GetDamageModifier(Feet) +
+                   GetDamageModifier(Chest);
+        }
+
+        private static int GetBaseDamage(Item item)
+        {
+            return item is null ? 0 : item.BaseDamage;
+        }
+
+        private static float GetDamageModifier(Item item)
+        {
+            return item is null ? 0 : item.DamageModifier;
         }
     }
 }
