@@ -18,5 +18,14 @@
             Feet = feet;
             Chest = chest;
         }
+
+        public int CalculateBaseDamage()
+        {
+             return LeftHand.BaseDamage +
+                   RightHand.BaseDamage +
+                   Head.BaseDamage +
+                   Feet.BaseDamage +
+                   Chest.BaseDamage;
+        }
     }
 }
