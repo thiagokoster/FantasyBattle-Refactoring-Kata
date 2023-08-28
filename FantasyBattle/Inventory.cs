@@ -14,5 +14,15 @@ namespace FantasyBattle
         {
             Equipment = equipment;
         }
+
+        public int EquipmentBaseDamage()
+        {
+            return Equipment.CalculateBaseDamage();
+        }
+
+        public float EquipmentDamageModifier()
+        {
+            return Equipment.CalculateDamageModifier();
+        }
     }
 }
