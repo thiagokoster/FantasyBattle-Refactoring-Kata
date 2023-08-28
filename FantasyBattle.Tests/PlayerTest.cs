@@ -1,32 +1,29 @@
-﻿using System.Collections.Generic;
-using System.Text;
-using Moq;
+﻿using Moq;
 using Xunit;
 
 namespace FantasyBattle.Tests
 {
     public class PlayerTest
     {
-
-        // choose this one if you are familiar with mocks
-        [Fact(Skip = "Test is not finished yet")]
-        public void DamageCalculationsWithMocks() {
+        [Fact]
+        public void DamageCalculations()
+        {
             var inventory = new Mock<Inventory>();
+            inventory.Setup(i => i.Equipment).Returns(
+                new Equipment(
+                    new BasicItem("round shield", 0, 1.4f),
+                    new BasicItem("excalibur", 20, 1.5f),
+                    new BasicItem("helmet of swiftness", 0, 1.2f),
+                    new BasicItem("boots", 0, 0.1f),
+                    new BasicItem("breastplate of steel", 0, 1.4f)
+                    )
+                );
+
             var stats = new Stats(1);
             var target = new Mock<Target>();
 
             var damage = new Player(inventory.Object, stats).CalculateDamage(target.Object);
-            Assert.Equal(9, damage.Amount);
-        }
-
-        // choose this one if you are not familiar with mocks
-        [Fact(Skip = "Test is not finished yet")]
-        public void DamageCalculations() {
-            Inventory inventory = new Inventory(null);
-            Stats stats = new Stats(1);
-            Target target = new SimpleEnemy(null, null);
-            Damage damage = new Player(inventory, stats).CalculateDamage(target);
-            Assert.Equal(9, damage.Amount);
+            Assert.Equal(114, damage.Amount);
         }
     }
 }
