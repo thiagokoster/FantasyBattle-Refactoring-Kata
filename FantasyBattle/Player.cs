@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 
 namespace FantasyBattle
 {
@@ -23,6 +22,13 @@ namespace FantasyBattle
             return new Damage(Math.Max(0, totalDamage - soak));
         }
 
+        public int CalculateSoak(int totalDamage)
+        {
+            // TODO: Not implemented yet
+            //  Add friendly fire
+            return totalDamage;
+        }
+
         private float CalculateDamageModifier()
         {
             var equipmentDamageModifier = Inventory.EquipmentDamageModifier();
@@ -32,24 +38,7 @@ namespace FantasyBattle
 
         private int GetSoak(ITarget other, int totalDamage)
         {
-            int soak = 0;
-            if (other is Player)
-            {
-                // TODO: Not implemented yet
-                //  Add friendly fire
-                soak = totalDamage;
-            }
-            else if (other is SimpleEnemy simpleEnemy)
-            {
-                soak = (int)Math.Round(
-                    simpleEnemy.Armor.DamageSoak *
-                    (
-                        simpleEnemy.Buffs.Select(x => x.SoakModifier).Sum() + 1
-                    ), 0
-                );
-            }
-
-            return soak;
+            return other.CalculateSoak(totalDamage);
         }
     }
 }
