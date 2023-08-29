@@ -4,22 +4,22 @@ namespace FantasyBattle
 {
     public class Equipment
     {
-        // TODO add a ring item that may be equipped
-        //  that may also add damage modifier
         public IItem LeftHand { get; }
         public IItem RightHand { get; }
         public IItem Head { get; }
         public IItem Feet { get; }
         public IItem Chest { get; }
+        public IItem Ring { get; }
 
 
-        public Equipment(IItem leftHand, IItem rightHand, IItem head, IItem feet, IItem chest)
+        public Equipment(IItem leftHand, IItem rightHand, IItem head, IItem feet, IItem chest, IItem ring = null)
         {
             LeftHand = leftHand;
             RightHand = rightHand;
             Head = head;
             Feet = feet;
             Chest = chest;
+            Ring = ring;
         }
 
         public int CalculateBaseDamage()
@@ -37,7 +37,8 @@ namespace FantasyBattle
                    GetDamageModifier(RightHand) +
                    GetDamageModifier(Head) +
                    GetDamageModifier(Feet) +
-                   GetDamageModifier(Chest);
+                   GetDamageModifier(Chest) +
+                   GetDamageModifier(Ring);
         }
 
         private static int GetBaseDamage(IItem item)
