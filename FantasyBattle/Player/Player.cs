@@ -18,22 +18,20 @@ namespace FantasyBattle
             int baseDamage = Inventory.EquipmentBaseDamage();
             float damageModifier = CalculateDamageModifier();
             int totalDamage = (int)Math.Round(baseDamage * damageModifier, 0);
+            
             int soak = GetSoak(other, totalDamage);
             return new Damage(Math.Max(0, totalDamage - soak));
         }
 
         public int CalculateSoak(int totalDamage)
         {
-            // TODO: Not implemented yet
-            //  Add friendly fire
-            return totalDamage;
+            return totalDamage / 2 + (int)Stats.CalculateSoak();
         }
 
         private float CalculateDamageModifier()
         {
             var equipmentDamageModifier = Inventory.EquipmentDamageModifier();
-            float strengthModifier = Stats.Strength * 0.1f;
-            return strengthModifier + equipmentDamageModifier;
+            return Stats.CalculateDamageModifier() + equipmentDamageModifier;
         }
 
         private int GetSoak(ITarget other, int totalDamage)
