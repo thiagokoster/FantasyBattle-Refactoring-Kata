@@ -1,15 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FantasyBattle.Items;
 
 namespace FantasyBattle
 {
     public class SimpleEnemy : ITarget
     {
-        public virtual Armor Armor { get; }
+        public virtual IArmor Armor { get; }
         public virtual List<Buff> Buffs { get; }
 
-        public SimpleEnemy(Armor armor, List<Buff> buffs)
+        public SimpleEnemy(IArmor armor, List<Buff> buffs)
         {
             Armor = armor;
             Buffs = buffs;
@@ -30,10 +31,5 @@ namespace FantasyBattle
     {
         float SoakModifier { get; }
         float DamageModifier { get; }
-    }
-
-    public interface Armor
-    {
-        int DamageSoak { get; }
     }
 }

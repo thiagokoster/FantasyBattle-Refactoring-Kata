@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using FantasyBattle.Items;
 using Moq;
 using Xunit;
 
@@ -14,7 +15,7 @@ namespace FantasyBattle.Tests
             inventory.Setup(i => i.EquipmentDamageModifier()).Returns(5.6F);
            
             var stats = new Stats(1);
-            var target = new Mock<Target>();
+            var target = new Mock<ITarget>();
 
             var damage = new Player(inventory.Object, stats).CalculateDamage(target.Object);
             Assert.Equal(114, damage.Amount);

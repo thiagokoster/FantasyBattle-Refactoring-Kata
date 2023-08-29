@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using FantasyBattle.Items;
+using Xunit;
 
 namespace FantasyBattle.Tests
 {

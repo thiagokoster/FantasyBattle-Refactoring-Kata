@@ -4,4 +4,16 @@
     <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Items\" />
+    <None Remove="Player\" />
+    <None Remove="Enemies\" />
+    <None Remove="Common\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Items\" />
+    <Folder Include="Player\" />
+    <Folder Include="Enemies\" />
+    <Folder Include="Common\" />
+  </ItemGroup>
 </Project>
